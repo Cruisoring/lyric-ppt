@@ -20,6 +20,8 @@ def all_lines(file_path: str):
     file_path = locate_file(file_path)
     with open(file_path, 'r', encoding='utf-8') as fid:
         lines = fid.readlines()
+        if (lines[-1].strip):
+            lines.append('\n')
         return lines
 
 

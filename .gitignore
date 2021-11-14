@@ -146,6 +146,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+py38/
 
 # Spyder project settings
 .spyderproject
@@ -173,3 +174,5 @@ cython_debug/
 /.idea/
 results/
 samples/
+
+*.pptx
