@@ -11,7 +11,7 @@ import re
 
 
 DEFAULT_TEMPLATE_FILE = 'templates\\template.pptx'
-STOPS = '[，！。；：]'
+STOPS = '[，！。；：、「」，：]'
 
 class Lyric:
 
@@ -57,12 +57,12 @@ class Lyric:
 
     def add_paragraph(self, frame, pt, lines):
         p = frame.add_paragraph()
-        if len(lines) == 1:
-            p_content = f' \n \n{lines[0]}'
-        else:
-            p_content = '\n'.join(lines)
-
-        p.text = p_content
+        if len(lines) <=2:
+            lines.insert(0, ' ')
+        elif len(lines) == 3:
+            lines.insert(0, ' ')
+        
+        p.text = '\n'.join(lines)
         p.alignment = PP_PARAGRAPH_ALIGNMENT.CENTER
         p.font.size = Pt(pt)        
 
@@ -109,6 +109,6 @@ def together(lyrics_file):
 
 if __name__ == '__main__':
     # lines = all_lines('耶穌不改變')
-    lines = together('2021-11-21')
+    lines = together('2021-12-05')
     l = Lyric(lines)
     l.generate()
