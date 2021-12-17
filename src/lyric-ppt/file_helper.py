@@ -2,6 +2,9 @@
 
 import os.path
 from pathlib import Path
+from opencc import OpenCC
+
+cc = OpenCC('s2t')
 
 
 LYRIC_TYPES = ('*.md')
@@ -19,7 +22,7 @@ def locate_file(file_path: str):
 def all_lines(file_path: str):
     file_path = locate_file(file_path)
     with open(file_path, 'r', encoding='utf-8') as fid:
-        lines = fid.readlines()
+        lines = [cc.convert(line) for line in fid.readlines()]
         if (lines[-1].strip):
             lines.append('\n')
         return lines
