@@ -121,7 +121,8 @@ def together(lyrics_file):
 
 
 if __name__ == '__main__':
-    lines = all_lines('平安夜')
-    # lines = together('2021-12-19')
+    # lines = all_lines('平安夜')
+    lines = together('2022-01-02')
     l = Lyric(lines)
-    l.generate(False)
+    # True to include pinyin
+    l.generate(True)
